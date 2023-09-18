@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Post from "./Post";
 import Header from "./Header";
+import { ThemeProvider } from "./ThemeContext"
+
+export const ThemeContext = createContext();
 
 function App() {
   const [posts, setPosts] = useState([
@@ -44,8 +47,10 @@ function App() {
   }
 
   return (
-    <>
-      <Header title="Cabeçalho 01">
+    <ThemeProvider>
+      <Header 
+        title="JStack's Blog"
+      >
         <h2>
           Posts da semana
           <button onClick={handleRefresh}>Atualizar</button>
@@ -55,13 +60,9 @@ function App() {
       <hr />
 
       {posts.map((post) => (
-        <Post
-          key={post.id}
-          onRemove={handleRemovePost}
-          post={post}
-        />
+        <Post key={post.id} onRemove={handleRemovePost} post={post} />
       ))}
-    </>
+    </ThemeProvider>
   );
 }
 
