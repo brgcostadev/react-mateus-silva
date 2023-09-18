@@ -9,33 +9,38 @@ function App() {
       title: "Cabeçalho 01",
       subtitle: "Subtítulo da notícia 01",
       likes: 10,
+      read: false,
     },
     {
       id: Math.random(),
       title: "Cabeçalho 02",
       subtitle: "Subtítulo da notícia 02",
       likes: 20,
+      read: false,
     },
     {
       id: Math.random(),
       title: "Cabeçalho 03",
       subtitle: "Subtítulo da notícia 03",
       likes: 50,
+      read: true,
     },
   ]);
 
   function handleRefresh() {
-    setTimeout(() => {
-      setPosts((prevState) => [
-        ...prevState,
-        {
-          id: Math.random(),
-          title: `Cabeçalho 0${prevState.length + 1}`,
-          subtitle: `Subtítulo da notícia 0${prevState.length + 1}`,
-          likes: 50,
-        },
-      ]);
-    }, 1500);
+    setPosts((prevState) => [
+      ...prevState,
+      {
+        id: Math.random(),
+        title: `Cabeçalho 0${prevState.length + 1}`,
+        subtitle: `Subtítulo da notícia 0${prevState.length + 1}`,
+        likes: 50,
+      },
+    ]);
+  }
+
+  function handleRemovePost(postId) {
+    setPosts((prevState) => prevState.filter((post) => post.id !== postId));
   }
 
   return (
@@ -52,11 +57,8 @@ function App() {
       {posts.map((post) => (
         <Post
           key={post.id}
-          likes={post.likes}
-          post={{
-            title: post.title,
-            subtitle: post.subtitle,
-          }}
+          onRemove={handleRemovePost}
+          post={post}
         />
       ))}
     </>
