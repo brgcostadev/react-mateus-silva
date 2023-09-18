@@ -3,8 +3,6 @@ import Post from "./Post";
 import Header from "./Header";
 import { ThemeProvider } from "./ThemeContext"
 
-export const ThemeContext = createContext();
-
 function App() {
   const [posts, setPosts] = useState([
     {

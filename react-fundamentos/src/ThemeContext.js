@@ -1,4 +1,4 @@
-import React, { useState, createContext} from "react";
+import React, { useState, createContext } from "react";
 export const ThemeContext = createContext();
 
 export function ThemeProvider(props) {
@@ -9,13 +9,13 @@ export function ThemeProvider(props) {
   }
 
   return (
-    <ThemeContext.Provider 
+    <ThemeContext.Provider
       value={{
-        theme, 
+        theme,
         onToggleTheme: handleToggleTheme,
       }}
     >
       {props.children}
     </ThemeContext.Provider>
-  )
+  );
 }
