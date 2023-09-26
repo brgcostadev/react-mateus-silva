@@ -1,4 +1,5 @@
 import React from "react";
+
 import PostHeader from "./PostHeader";
 import styles from "./Post.scss";
 
@@ -17,7 +18,6 @@ export default function Post(props) {
       <small>{props.post.subtitle}</small>
       <br />
       Media: {props.post.likes / 2}
-      <br />
     </article>
   );
 }
