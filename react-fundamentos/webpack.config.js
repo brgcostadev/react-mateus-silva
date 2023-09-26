@@ -10,21 +10,25 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public', 'index.html')
-      }),
-      new CleanWebpackPlugin(),
+      template: path.resolve(__dirname, "public", "index.html"),
+    }),
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
       {
-        test: /\.js$/ , 
+        test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      }
-    ]
+        use: "babel-loader",
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   devServer: {
     port: 3000,
   },
-  mode: 'development',
+  mode: "development",
 };
